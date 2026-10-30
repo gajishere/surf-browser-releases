@@ -1,0 +1,69 @@
+name: Bug report
+description: Something in Surf is not working as expected
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. For security problems, please do not use this form. Use [private reporting](https://github.com/gajishere/surf-browser-releases/security/advisories/new) instead.
+  - type: input
+    id: version
+    attributes:
+      label: Surf version
+      description: Type `ver` in Surf to see it.
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: windows
+    attributes:
+      label: Windows version
+      options:
+        - Windows 11
+        - Windows 10
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: download
+    attributes:
+      label: Download
+      description: Which file did you download?
+      options:
+        - Portable zip
+        - Small exe (needs .NET 10)
+        - Not sure
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Describe the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+  - type: textarea
+    id: output
+    attributes:
+      label: Console output or screenshots
+      description: Paste console output here, or drag screenshots into this box.
+      render: text
+  - type: checkboxes
+    id: searched
+    attributes:
+      label: Before you submit
+      options:
+        - label: I searched existing issues
+          required: true

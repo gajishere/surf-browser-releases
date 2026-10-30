@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/gajishere/surf-browser-releases/security/advisories/new
+    about: Report security problems privately, not in a public issue.
+  - name: Command reference
+    url: https://github.com/gajishere/surf-browser-releases/blob/main/docs/COMMANDS.md
+    about: Check how a command works before opening an issue.
+  - name: Latest download
+    url: https://github.com/gajishere/surf-browser-releases/releases/latest
+    about: Get the latest version of Surf.
