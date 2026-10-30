@@ -51,10 +51,9 @@ A site name opens the site. Anything that is not a command is searched. Everythi
 
 ## Fast and light
 
-| | vs Microsoft Edge | vs Google Chrome |
-| :--- | :---: | :---: |
-| **Opens to a loaded page** | **50% faster** | **40% faster** |
-| **Memory with six tabs open** | **5% less** | **3% less** |
+<p align="center">
+  <img src="assets/performance.png" alt="Fast. And light. Opening a page: up to 50% faster, 50% faster than Microsoft Edge and 40% faster than Google Chrome. Memory with six tabs open: up to 5% less, 5% less than Microsoft Edge and 3% less than Google Chrome." width="100%">
+</p>
 
 Surf uses the same Chromium engine as Edge, without Edge's extra background services, and tells background tabs to give memory back. With **Keep Surf ready in the background** on, it waits from the moment you sign in and opens almost instantly.
 
