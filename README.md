@@ -39,7 +39,7 @@
 Surf is a web browser with no toolbar. The page fills the window, your tabs sit in the title bar like Windows Terminal, and a black console sits underneath. You type what you want and press Enter.
 
 ```text
-C:\Surf [Version 1.0.0]
+C:\Surf [Version 1.1.0]
 (c) 2026 Surf Browser. Type 'help' for commands.
 
 C:\Web>wikipedia
@@ -48,6 +48,17 @@ C:\Web\wikipedia.org>
 ```
 
 A site name opens the site. Anything that is not a command is searched. Everything else you would click in another browser, from bookmarks and history to settings and picture-in-picture, is a short command you can also put in a script. Pages are drawn by Microsoft Edge's engine (WebView2), so sites work as they do in Edge, while Surf itself stays small and quiet.
+
+## Fast and light
+
+| | vs Microsoft Edge | vs Google Chrome |
+| :--- | :---: | :---: |
+| **Opens to a loaded page** | **50% faster** | **40% faster** |
+| **Memory with six tabs open** | **5% less** | **3% less** |
+
+Surf uses the same Chromium engine as Edge, without Edge's extra background services, and tells background tabs to give memory back. With **Keep Surf ready in the background** on, it waits from the moment you sign in and opens almost instantly.
+
+<sub>Measured on one Windows 11 PC against Edge 156 and Chrome 156, each on a fresh profile. Opening: from launch to a loaded page, with Keep Surf ready on. Memory: every process of the browser added up, a minute after opening YouTube, Wikipedia, GitHub, Reddit and a Google search, with Block ads off, since Edge and Chrome block no ads by default.</sub>
 
 ## Features
 
@@ -60,10 +71,10 @@ A site name opens the site. Anything that is not a command is searched. Everythi
 
 | Read the web your way | Private and light |
 | :--- | :--- |
-| **Built-in ad blocker.** uBlock Origin Lite is on by default. Surf keeps it up to date and checks every update against its published SHA-256. | **No telemetry.** No analytics and no crash reports. The only request Surf makes by itself is the ad-blocker update check. [Details](docs/PRIVACY.md). |
+| **Built-in ad blocker.** uBlock Origin Lite is on by default. Surf keeps it up to date and checks every update against its published SHA-256. | **No telemetry.** No analytics and no crash reports. The only requests Surf makes by itself are its own update check and the ad blocker's. [Details](docs/PRIVACY.md). |
 | **Force dark mode.** Bundled Dark Reader turns bright sites dark. | **One folder.** Settings, history, bookmarks and browser data live in `%LOCALAPPDATA%\SurfBrowser`. Delete it and the app folder, and Surf is gone. |
 | **Text mode.** `mode text` shows a page as monospace text in your console colors, with no pictures or videos. `type` prints the page's text into the console. | **Clear on exit.** Optionally wipe cookies, history and site data every time you close Surf. Third-party cookie blocking and tracking prevention are built in. |
-| **Picture-in-picture.** `pip` floats the video, and auto PiP can do it when you switch tabs. | **Fast start.** In our tests the window is up in about 1.7 s and the first page has loaded in about 2 s. Surf's own process uses about 38 MB; pages take what they take, as in any browser. |
+| **Picture-in-picture.** `pip` floats the video, and auto PiP can do it when you switch tabs. | **Updates itself.** Surf checks for a new version once a day and has it ready for your next start, checked against the SHA-256 GitHub publishes. `ver /update` checks right away. |
 
 | Make it yours | Feels like home |
 | :--- | :--- |

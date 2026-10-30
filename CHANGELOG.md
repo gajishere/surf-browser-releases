@@ -4,11 +4,10 @@ All notable changes to Surf Browser are listed here. The format follows [Keep a 
 
 ## [1.1.0] - 2026-10-31
 
-### Faster and lighter
+### Faster
 
-- Keep Surf ready in the background (Settings, Search and startup; off by default). Surf stays running hidden after you close it and starts when you sign in, so it opens in about 0.2 s: 50% faster than Microsoft Edge and 40% faster than Google Chrome in our tests. It uses about 108 MB while hidden.
+- Keep Surf ready in the background (Settings, Search and startup; off by default). Surf stays running hidden after you close it and starts when you sign in, so it opens in about 0.2 s. It uses about 108 MB while hidden.
 - A cold start loads the first page in about 0.65 s, down from about 0.78 s in 1.0.0.
-- With six tabs Surf uses 6% less memory than Edge and 3% less than Chrome (with Block ads off).
 
 ### Added
 

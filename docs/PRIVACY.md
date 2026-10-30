@@ -2,7 +2,7 @@
 
 This page explains what Surf keeps on your PC, what Surf itself sends over the network, and how to remove everything.
 
-In short: Surf has no analytics or telemetry, it keeps your data in one folder on your PC, and the only network request it makes by itself is a once-a-day check for an ad-blocker update.
+In short: Surf has no analytics or telemetry, it keeps your data in one folder on your PC, and the only network requests it makes by itself are a once-a-day check for a Surf update and one for an ad-blocker update.
 
 ## What Surf stores on your PC
 
@@ -19,6 +19,7 @@ Everything is stored under `%LOCALAPPDATA%\SurfBrowser`. Nothing is stored next 
 | `scripts\*.bat` | Console scripts you create | Until you delete them | No |
 | `settings.json` | Your settings. See [SETTINGS.md](SETTINGS.md) | Until you delete it | No |
 | `Extensions\uBOLite` | The unpacked uBlock Origin Lite ad blocker, and a small `state.json` that remembers the installed version and the time of the last update check | Old versions are cleaned up after an update | No |
+| `Updates` | `last-check.txt`, the time of the last Surf update check, and an `update.lock` file that keeps two Surf windows from updating at once | Until you delete it | No |
 | `WebView2` | The browser profile (see below) | Managed by the browser engine | Yes, the browsing data inside it (see below) |
 
 Surf may also leave short-lived helper files while it writes: `.tmp` copies of the files above, and `.bak` copies (`settings.json.bak`, `bookmarks.json.bak`) made when it finds a file it cannot read. The ad blocker briefly writes its bundled package to your temp folder as `surf-ubol-*.zip` while unpacking it, and deletes it afterwards. While it updates, it also uses an `update.lock` file, a `download-*.zip.part` file and temporary unpack folders inside `Extensions\uBOLite`, and removes them when it is done.
@@ -45,7 +46,13 @@ Surf's own code makes these requests and no others:
    - What is sent: an ordinary HTTPS GET request with the headers `User-Agent: SurfBrowser/1.0` and an `Accept` header. It carries no cookies and no data from your browsing. GitHub sees your IP address, as any website does.
    - If a newer version exists, Surf downloads it from `https://github.com/uBlockOrigin/uBOL-home/releases/download/` (GitHub redirects the download to its file hosts). Surf installs it only if the file matches the SHA-256 checksum that GitHub published for it.
    - When **Block ads** is off, Surf makes no request at all.
-2. **`ping` command.** Only when you type `ping`, Surf looks up the name you gave with your system's DNS and sends four ICMP echo requests to that address, like the Windows `ping` command.
+2. **Surf update check.** While **Update Surf automatically** is on (it is by default), Surf asks GitHub whether a newer Surf exists.
+   - Where: `https://api.github.com/repos/gajishere/surf-browser-releases/releases/latest`.
+   - When: about 30 seconds after Surf starts and then at most once every 24 hours, and whenever you type `ver /update`. The time of the last check is saved in `Updates\last-check.txt`.
+   - What is sent: the same kind of request as the ad-blocker check, with the same headers, no cookies and no data from your browsing.
+   - If a newer version exists, Surf downloads it from `https://github.com/gajishere/surf-browser-releases/releases/download/` and uses it only if the file matches the SHA-256 checksum that GitHub published for it. It replaces `SurfBrowser.exe` and runs from your next start.
+   - When the setting is off, Surf makes no request unless you type `ver /update`.
+3. **`ping` command.** Only when you type `ping`, Surf looks up the name you gave with your system's DNS and sends four ICMP echo requests to that address, like the Windows `ping` command.
 
 That is the complete list. Surf does not fetch search suggestions, site icons or news from any server of its own. When you type a search, Surf opens your chosen search engine's results page like any other page (see below). Site icons shown on tabs are the ones the page itself provides.
 
