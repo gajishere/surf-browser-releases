@@ -2,6 +2,16 @@
 
 All notable changes to Surf Browser are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and Surf uses [semantic versioning](https://semver.org/).
 
+## [1.1.1] - 2026-10-31
+
+### Added
+
+- An installer, `Surf-1.1.1-win-x64-setup.exe`, now the recommended download. It installs Surf just for you (no admin rights) in `%LOCALAPPDATA%\Programs\Surf`, adds a Start menu shortcut and an optional desktop shortcut, and keeps Surf updating itself. Its uninstaller asks before deleting your settings, bookmarks and history. The portable zip and small exe are still there.
+
+### Changed
+
+- The app icon has rounded corners and a soft blue glow, so it sits better on the taskbar.
+
 ## [1.1.0] - 2026-10-31
 
 ### Faster
@@ -60,5 +70,6 @@ The first public release.
 - The web engine starts while the window is being built, so the first page appears sooner.
 - Surf's own process uses about 38 MB, and the console keeps at most about 9,000 lines.
 
+[1.1.1]: https://github.com/gajishere/surf-browser-releases/releases/tag/v1.1.1
 [1.1.0]: https://github.com/gajishere/surf-browser-releases/releases/tag/v1.1.0
 [1.0.0]: https://github.com/gajishere/surf-browser-releases/releases/tag/v1.0.0

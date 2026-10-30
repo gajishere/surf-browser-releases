@@ -39,7 +39,7 @@
 Surf is a web browser with no toolbar. The page fills the window, your tabs sit in the title bar like Windows Terminal, and a black console sits underneath. You type what you want and press Enter.
 
 ```text
-C:\Surf [Version 1.1.0]
+C:\Surf [Version 1.1.1]
 (c) 2026 Surf Browser. Type 'help' for commands.
 
 C:\Web>wikipedia
@@ -103,8 +103,8 @@ Surf uses the same Chromium engine as Edge, without Edge's extra background serv
 
 ## Get started
 
-1. **Download.** Open the [latest release](https://github.com/gajishere/surf-browser-releases/releases/latest) and download `Surf-<version>-win-x64.zip`.
-2. **Unzip and run.** Extract the zip anywhere you like, for example `C:\Apps\Surf`, and run `SurfBrowser.exe`. There is no installer, and nothing else to install.
+1. **Download.** Open the [latest release](https://github.com/gajishere/surf-browser-releases/releases/latest) and download `Surf-<version>-win-x64-setup.exe`.
+2. **Install.** Run it and choose **Next** a few times. Surf installs just for you, so it needs no admin rights, and it adds itself to the Start menu. Prefer no installer? Take the portable zip instead (see below).
 3. **Type.** The cursor is already in the console. Try these:
 
 | Type | What happens |
@@ -124,11 +124,12 @@ Surf uses the same Chromium engine as Edge, without Edge's extra background serv
 
 | File | Size | Choose it if |
 | :--- | :--- | :--- |
-| `Surf-<version>-win-x64.zip` | about 65 MB | You want it to just work. Everything Surf needs is inside. |
+| **`Surf-<version>-win-x64-setup.exe`** | about 51 MB | **Recommended.** Installs Surf with a Start menu shortcut and an uninstaller. Everything Surf needs is inside. |
+| `Surf-<version>-win-x64.zip` | about 65 MB | You want a portable copy. Unzip it anywhere, for example `C:\Apps\Surf`, and run `SurfBrowser.exe`. |
 | `Surf-<version>-win-x64-small.exe` | about 11 MB | You already have the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) (x64). Without it, the file shows a message with a link to the download instead of starting. |
-| `SHA256SUMS.txt` | | Checksums for both files. |
+| `SHA256SUMS.txt` | | Checksums for all three files. |
 
-Both run the same Surf at the same speed (we measured both). GitHub's *Source code* archives contain only this repository's documentation, not the app.
+All of them run the same Surf at the same speed, and all of them update themselves. GitHub's *Source code* archives contain only this repository's documentation, not the app.
 
 ### System requirements
 
@@ -140,18 +141,18 @@ Both run the same Surf at the same speed (we measured both). GitHub's *Source co
 In PowerShell, in the folder where you saved the file:
 
 ```powershell
-Get-FileHash .\Surf-1.0.0-win-x64.zip -Algorithm SHA256
+Get-FileHash .\Surf-1.1.1-win-x64-setup.exe -Algorithm SHA256
 ```
 
 Compare the hash with the matching line in `SHA256SUMS.txt` from the same release.
 
 ### Update
 
-Download the new version and replace the old files. Your settings, bookmarks, history, scripts and workspaces stay where they are, in `%LOCALAPPDATA%\SurfBrowser`. To hear about new versions, choose **Watch → Custom → Releases** at the top of this page.
+Surf updates itself: once a day it checks for a new version and gets it ready for your next start. Type `ver /update` to check right away, or turn it off with *Update Surf automatically* in `settings`. Your settings, bookmarks, history, scripts and workspaces stay where they are, in `%LOCALAPPDATA%\SurfBrowser`. To hear about new versions, choose **Watch → Custom → Releases** at the top of this page.
 
 ### Uninstall
 
-Close Surf, delete the folder you unzipped it into, and delete `%LOCALAPPDATA%\SurfBrowser`. Surf writes nothing to the registry. See [Privacy](docs/PRIVACY.md#remove-everything).
+If you used the installer, open **Settings → Apps → Installed apps**, find **Surf Browser** and choose **Uninstall**. It asks whether to delete your settings, bookmarks and history too. For the zip or small exe, close Surf, delete the folder or file, and delete `%LOCALAPPDATA%\SurfBrowser`. See [Privacy](docs/PRIVACY.md#remove-everything).
 
 ## Documentation
 

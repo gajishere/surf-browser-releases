@@ -81,11 +81,15 @@ Surf has no analytics, usage tracking, crash reporting or telemetry. Its code co
 
 ## Remove everything
 
+If you installed Surf with the installer, uninstall it from **Settings → Apps → Installed apps** and answer **Yes** when it asks whether to delete your settings, bookmarks and history. That removes everything below.
+
+Otherwise:
+
 1. Close Surf.
 2. Delete the folder you unzipped Surf into, or the small `.exe` if you use that download.
 3. Delete the folder `%LOCALAPPDATA%\SurfBrowser`. Paste that path into the File Explorer address bar to open it.
 
-Surf does not write to the Windows registry, and it does not store data anywhere else. Files you downloaded stay in your download folder until you delete them. If you set the `WEBVIEW2_USER_DATA_FOLDER` environment variable, the browser engine keeps its profile in that folder instead of `WebView2`, so delete that folder too.
+In the Windows registry, Surf writes only the `Surf Browser` entry under `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run` while *Keep Surf ready* is on (turning it off removes it), and the installer adds its own uninstall entry. Surf does not store data anywhere else. Files you downloaded stay in your download folder until you delete them. If you set the `WEBVIEW2_USER_DATA_FOLDER` environment variable, the browser engine keeps its profile in that folder instead of `WebView2`, so delete that folder too.
 
 ## See also
 
