@@ -40,6 +40,7 @@ You can edit the file by hand while Surf is closed. Surf reads it once, when it 
 | Cursor | `cursorShape` | Underscore | Underscore, Block, Bar |
 | Blinking cursor | `cursorBlink` | On | On or off |
 | Console lines | `consoleLines` | 1 | A whole number from 1 to 10 |
+| Command suggestions | `suggestions` | On | On or off |
 | Tab titles | `tabTitles` | Name | Name, Icon only |
 | Force dark mode | `forceDark` | Off | On or off |
 
@@ -54,6 +55,8 @@ You can edit the file by hand while Surf is closed. Surf reads it once, when it 
 **Blinking cursor** turns the cursor blink on or off.
 
 **Console lines** is how many lines tall the console at the bottom of the window is. The window can limit this when it is small.
+
+**Command suggestions** lists matching commands, sites, tabs and shortcuts above the prompt as you type, each with what it does, and shows the rest of the selected match dimmed after the cursor. Tab completes whether it is on or off.
 
 **Tab titles** chooses whether tabs show the site name or only the site icon. In the file the values are `name` and `icon`.
 
@@ -84,6 +87,7 @@ You can edit the file by hand while Surf is closed. Surf reads it once, when it 
 | Smart tab grouping | `smartGrouping` | On | On or off |
 | Sleep after | `suspendAfterMinutes` | 5 minutes | 1 minute, 5 minutes, 15 minutes, 30 minutes, 1 hour, Never |
 | Discard after | `discardAfterMinutes` | 30 minutes | 5 minutes, 15 minutes, 30 minutes, 1 hour, 2 hours, Never |
+| Efficiency mode | `efficiencyMode` | On battery | On battery, Always, Off |
 | Mute background tabs | `muteBackgroundTabs` | Off | On or off |
 | Auto picture-in-picture | `autoPip` | Off | On or off |
 | Block autoplay | `blockAutoplay` | Off | On or off |
@@ -93,6 +97,8 @@ You can edit the file by hand while Surf is closed. Surf reads it once, when it 
 **Sleep after** puts a tab that has been in the background for that long to sleep to save memory. A tab is not put to sleep while it is playing media or downloading. In the file the values are the number of minutes as text (`"1"`, `"5"`, `"15"`, `"30"`, `"60"`), and `"0"` means Never.
 
 **Discard after** frees the memory of a background tab completely after that long. The tab reloads when you select it. A tab is never discarded sooner than Sleep after. In the file the values are the number of minutes as text (`"5"`, `"15"`, `"30"`, `"60"`, `"120"`), and `"0"` means Never.
+
+**Efficiency mode** shortens those times to save memory and battery: background tabs sleep after 1 minute and are discarded after 10, unless your own times are shorter or Never. On battery applies it only while the PC runs on its battery. The other page of a [split view](COMMANDS.md#split) stays awake, and private tabs are never discarded. In the file the values are `battery`, `always` and `off`.
 
 **Mute background tabs** silences every tab you are not looking at.
 

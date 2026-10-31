@@ -43,18 +43,18 @@ These work while you are typing at the prompt.
 | Keys | What it does |
 | --- | --- |
 | Enter | Runs the line. |
-| Tab | Completes the word before the cursor. Press it again for the next match. |
+| Tab | Completes the word with the selected suggestion. Press it again for the next match. |
 | Shift+Tab | Goes back to the previous match. |
-| Up | Brings back the previous command. Surf keeps the last 50. |
-| Down | Moves forward to the next command. It stops at the newest one; press Esc to clear the line. |
-| Esc | Clears the line. On an empty line it closes a console that grew to show a long answer. |
+| Up | Moves up the suggestion list when it is open. Otherwise it brings back the previous command; Surf keeps the last 50. |
+| Down | Moves down the suggestion list when it is open. Otherwise it moves forward to the next command, stopping at the newest one. |
+| Esc | Hides the suggestion list when it is open. Otherwise it clears the line, and on an empty line it closes a console that grew to show a long answer. |
 | Home | Moves the cursor to the start of what you typed, just after the prompt. |
 | End | Moves the cursor to the end of the line. |
 | Shift+Home, Shift+End | Selects from the cursor to the start or the end of the line. |
 | Backspace, Left | Stop at the prompt. You cannot delete or move into it. |
 | Mouse wheel | Scrolls the console. |
 
-Completion only works when the cursor is at the end of the line. Pasting text that has several lines joins them into one line with spaces. Normal text editing keys such as Ctrl+C, Ctrl+V and Shift+arrows work as usual.
+While you type, matching commands, sites and tabs are listed above the prompt with what each one does, and you can click one to take it. Turn the list off with Command suggestions in [Settings](SETTINGS.md). Completion only works when the cursor is at the end of the line. Pasting text that has several lines joins them into one line with spaces. Normal text editing keys such as Ctrl+C, Ctrl+V and Shift+arrows work as usual.
 
 ## Mouse
 
@@ -77,6 +77,8 @@ Tabs cannot be dragged to a new order. Tabs from one site are kept together auto
 | Action | What it does |
 | --- | --- |
 | Drag the divider above the console | Changes the console height. It snaps to whole lines. |
+| Drag the bar between split pages | Changes how much room each page gets in a split view. |
+| Click a page in a split view | Makes it the current page. A light line marks its top. |
 | Click the empty page area | Moves the keyboard focus to the console. |
 | Click into a web page | Gives the focus to the page, and closes a console that had grown to show a long answer. |
 | Window buttons | Minimize, maximize and close, in the top right. Pointing at the maximize button offers the Windows 11 snap layouts. |

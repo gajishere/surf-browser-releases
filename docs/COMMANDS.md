@@ -5,6 +5,7 @@ Everything in Surf is driven from the console at the bottom of the window, so th
 - [How input works](#how-input-works)
 - [Browsing](#browsing)
 - [Pages](#pages)
+- [Tabs and memory](#tabs-and-memory)
 - [Bookmarks and history](#bookmarks-and-history)
 - [Workspaces and scripts](#workspaces-and-scripts)
 - [Console and look](#console-and-look)
@@ -22,8 +23,9 @@ The prompt shows where you are. With no page open it reads `C:\Web>`. On a page 
 - **Anything that is not a command opens as an address or a search.** You do not need `start` for that. Type `youtube`, `example.com` or `best pizza near me` and Surf opens it in a new tab.
 - **The rules, in order:**
   1. If the first word is a command, the command runs.
-  2. If the whole line is the name of one of your [scripts](#batch), the script runs.
-  3. Otherwise Surf treats the line as `start` followed by what you typed (see [start](#start)).
+  2. If the first word is one of your [doskey](#doskey) shortcuts, the shortcut runs.
+  3. If the whole line is the name of one of your [scripts](#batch), the script runs.
+  4. Otherwise Surf treats the line as `start` followed by what you typed (see [start](#start)).
 - **A leading `?` always searches.** `?youtube` searches for the word instead of opening the site. The `?` can sit right against the text or be followed by a space.
 - **Add `/?` to any command** to print its usage, for example `cd /?`. `help command` shows the same text.
 
@@ -47,10 +49,11 @@ C:\Web> cls & ver
 
 ### Tab completion and history
 
-- Press **Tab** to complete the word you are typing, and press it again for the next match. **Shift+Tab** goes back to the previous match. Completion works at the end of the line.
+- As you type, the matches are listed above the prompt with a short note on what each one does, and the rest of the selected match shows dimmed after the cursor. **Up** and **Down** move through the list, and **Esc** hides it. After a command and a space, a dim hint shows what the command expects. Command suggestions in Settings turns the list off.
+- Press **Tab** to complete the word with the selected match, and press it again for the next match. **Shift+Tab** goes back to the previous match. Completion works at the end of the line.
 - The first word completes to commands, your scripts, your bookmarks, and site names (open tabs first, then popular and visited sites). Start the word with `/` to complete slash commands.
 - After a command, Tab completes what that command takes: sites after `start`, `cd` and `tree`; `add`, `del` and `list` after `bookmark`; `add`, `del`, `list` and `show` after `batch`; bookmark names after `bookmark del`; script names after `batch del` and `batch show`; command names and `keys` after `help`; `title` after `copy`; `normal` and `text` after `mode`; workspace names after `cd \` and `rd \`.
-- Press **Up** and **Down** to move through the commands you typed before. Surf keeps the last 50, skips a command that repeats the one before it, and remembers them between sessions unless Surf is set to clear its data on exit.
+- When the list is not open, press **Up** and **Down** to move through the commands you typed before. Surf keeps the last 50, skips a command that repeats the one before it, and remembers them between sessions unless Surf is set to clear its data on exit.
 - **Esc** clears the line. On an empty line it closes a console that grew to show a long answer.
 
 ## Browsing
@@ -60,14 +63,15 @@ C:\Web> cls & ver
 Opens a site, an address or a search in a new tab. A blank new tab is reused instead of opening another.
 
 ```text
-start site
-start address
-start search text
+start [/private] site
+start [/private] address
+start [/private] search text
 start ?search text
 ```
 
 | Argument | What it does |
 | --- | --- |
+| `/private` | Opens it in a private tab. Nothing from a private tab goes into your history or your command history, and its sign-ins and cookies are deleted when the last private tab closes. `start /private` alone opens a blank private tab. A private tab's prompt reads `C:\Private\…`, and its tab icon carries a struck-out eye. |
 | `site` | The name of a bookmark, a popular site or a site you have visited, such as `youtube`. |
 | `address` | A web address such as `youtube.com`, `localhost:3000` or `https://example.com`. |
 | `search text` | Anything else is searched with your search engine (set in Settings). |
@@ -86,6 +90,7 @@ How a word is understood, in order:
 C:\Web> start youtube
 C:\Web> start localhost:3000
 C:\Web> start ?youtube
+C:\Web> start /private github
 ```
 
 Typing nothing after `start` prints `The syntax of the command is incorrect.`
@@ -142,6 +147,44 @@ Reloads the current page.
 
 ```text
 C:\Web\example.com> reload
+```
+
+### split
+
+Shows a second page beside the current one.
+
+```text
+split site
+split address
+split search text
+split off
+```
+
+| Form | What it does |
+| --- | --- |
+| `split site` | Opens the site on the right, or shows its tab there if it is already open. Addresses and searches work as in [start](#start). |
+| `split off` | Goes back to one page. |
+
+The page with a light line across its top is the current one, the one commands act on. Click into the other page to switch. Drag the bar between the pages to give one more room. Selecting another tab, or closing either one, also ends the split.
+
+```text
+C:\Web\github.com> split youtube
+C:\Web\youtube.com> split off
+```
+
+### f
+
+Labels every link, button and field in view with a few letters, so you can follow one without the mouse.
+
+```text
+f
+```
+
+The prompt changes to `Label:`. Type a label to click what it marks, or type it in capitals (with Shift) to open a link in a new tab. Esc or Enter gives up, and so does scrolling the page. Surf's own pages have no labels.
+
+```text
+C:\Web\github.com> f
+Label: k
 ```
 
 ## Pages
@@ -222,6 +265,84 @@ C:\Web> ping example.com
 ```
 
 It sends 4 requests, one a second, and prints the replies and a summary in the style of the Windows `ping`. Some sites do not answer ping even when they are up. `ping` with no site prints its usage.
+
+### find
+
+Finds text on the current page, marks every match and goes to the first.
+
+```text
+find "text"
+find n
+find
+```
+
+| Form | What it does |
+| --- | --- |
+| `find "text"` | Marks every match and lists them, numbered, in the console. Case does not matter. The quotes are optional, unless the text is a number. |
+| `find n` | Goes to match `n` of the last search. |
+| `find` | Removes the marks. |
+
+```text
+C:\Web\en.wikipedia.org> find "terminal"
+C:\Web\en.wikipedia.org> find 12
+C:\Web\en.wikipedia.org> find "2026"
+```
+
+The console lists the first 50 matches with a little of the text around each one.
+
+### snip
+
+Saves a picture (PNG) of the current page to your download folder.
+
+```text
+snip [/full]
+```
+
+| Option | What it does |
+| --- | --- |
+| `/full` | Saves the whole page, not just what is on screen, up to 16,384 pixels tall. |
+
+The file is named after the time and the site, for example `Surf snip 2026-10-31 090502 youtube.com.png`, so snips sort by time.
+
+```text
+C:\Web\github.com> snip
+C:\Web\github.com> snip /full
+```
+
+## Tabs and memory
+
+### tasklist
+
+Lists the tabs, the process that draws each one and its memory, like the Windows `tasklist` command.
+
+```text
+tasklist
+```
+
+Each tab shows its number, site, process ID, state (Active, Shown, Background, Sleeping, Discarded or Not loaded) and memory. Below the tabs come the engine's own processes, Surf itself, and a total. Tabs of one site can share a process. Sleeping tabs use little memory and discarded tabs use none. When [Efficiency mode](SETTINGS.md#tabs-and-media) is on, the last line says so.
+
+```text
+C:\Web> tasklist
+```
+
+### taskkill
+
+Closes tabs by their number or by their site.
+
+```text
+taskkill n [n ...]
+taskkill /im site
+```
+
+| Form | What it does |
+| --- | --- |
+| `n` | A tab's number, as `tasklist` shows it. It is also the tab's place in the tab strip. |
+| `/im site` | Closes every tab of that site: `youtube`, `youtube.com` or `YouTube`. A `*` at the end matches the start of the name. |
+
+```text
+C:\Web> taskkill 3
+C:\Web> taskkill /im youtube
+```
 
 ## Bookmarks and history
 
@@ -363,6 +484,38 @@ rem [comment]
 ```text
 C:\Web> batch add morning rem open my usual sites
 ```
+
+### doskey
+
+Makes short names (aliases) for commands you type often, like the Windows `doskey` command.
+
+```text
+doskey [/macros]
+doskey name=[command]
+```
+
+| Form | What it does |
+| --- | --- |
+| `doskey` or `doskey /macros` | Lists your shortcuts. |
+| `doskey name=command` | Makes the shortcut `name`, or changes it. A name is one word of letters, digits and hyphens, and cannot be a command's name. |
+| `doskey name=` | Deletes the shortcut. |
+
+In the command, these stand for what you type after the name:
+
+| Code | What it becomes |
+| --- | --- |
+| `$1` to `$9` | The first to ninth word. |
+| `$*` | Everything you typed after the name. |
+| `$T` | Separates two commands. |
+| `$$` | A dollar sign. |
+
+```text
+C:\Web> doskey yt=start youtube.com/results?search_query=$*
+C:\Web> yt lofi beats
+C:\Web> doskey work=cd \work $T start mail
+```
+
+A shortcut cannot run another shortcut. You can keep up to 200, and they are saved in `aliases.json` in `%LOCALAPPDATA%\SurfBrowser`.
 
 ## Console and look
 
@@ -514,22 +667,29 @@ C:\Web> color 0A
 
 | Command | What it does |
 | --- | --- |
-| `start` | Opens a site, address or search in a new tab. |
+| `start` | Opens a site, address or search in a new tab, or a private tab with `/private`. |
 | `cd` | Shows the address, loads one in this tab, goes back with `..`, or switches workspace with `\name`. |
 | `back` | Goes back one page. |
 | `forward` | Goes forward one page. |
 | `reload` | Reloads the page. |
+| `split` | Shows a second page beside this one; `split off` goes back to one. |
+| `f` | Labels the links on the page so you can follow one by typing. |
 | `copy` | Copies the page address, or its title with `copy title`. |
 | `type` | Prints the page's text in the console. |
 | `mode` | Shows the page as plain text (`mode text`) or normal (`mode normal`). |
 | `pip` | Shows the page's video in a small window on top. |
 | `ping` | Checks whether a site is reachable. |
+| `find` | Marks text on the page, or goes to match `n`. |
+| `snip` | Saves a picture of the page, or the whole page with `/full`. |
+| `tasklist` | Lists the tabs with the memory each one uses. |
+| `taskkill` | Closes tabs by number or by site. |
 | `bookmark` | Saves (`add`), lists (`list`) and removes (`del`) named bookmarks. |
 | `tree` | Shows your history as a tree, or your workspaces with `tree \`. |
 | `rd` | Removes a workspace. |
 | `batch` | Creates, lists, shows and deletes scripts; type a script's name to run it. |
 | `echo` | Prints a line of text. |
 | `rem` | A comment that does nothing. |
+| `doskey` | Makes, lists and deletes your own shortcuts. |
 | `cls` | Clears the console. |
 | `size` | Sets the console height as a percentage. |
 | `mini` | Collapses or restores the console. |

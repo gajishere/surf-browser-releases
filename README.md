@@ -39,7 +39,7 @@
 Surf is a web browser with no toolbar. The page fills the window, your tabs sit in the title bar like Windows Terminal, and a black console sits underneath. You type what you want and press Enter.
 
 ```text
-C:\Surf [Version 1.1.1]
+C:\Surf [Version 1.2.0]
 (c) 2026 Surf Browser. Type 'help' for commands.
 
 C:\Web>wikipedia
@@ -65,14 +65,18 @@ Surf uses the same Chromium engine as Edge, without Edge's extra background serv
 | :--- | :--- |
 | **Sites by name.** `youtube`, `github` and `wikipedia` open the site. A bare address like `example.com` opens it, and anything else is a search. A leading `?` always searches. | **Smart grouping.** Tabs from the same site sit together under one label that you can collapse. |
 | **Real commands.** `start`, `cd`, `back`, `copy`, `tree`, `ping`, `type` and many more, each with its own `/?` help. | **Sleeping tabs.** By default, background tabs sleep after 5 minutes and free their memory after 30. Tabs playing media or downloading are left alone. |
-| **Completion and history.** Tab completes commands, sites, bookmarks and scripts. Up and Down bring back your last 50 commands. | **Workspaces.** `cd \work` switches to a separate set of tabs, and `cd \` comes back. |
+| **Suggestions as you type.** Matching commands, sites and tabs appear above the prompt, each with what it does. Tab takes one. Up and Down bring back your last 50 commands. | **Workspaces.** `cd \work` switches to a separate set of tabs, and `cd \` comes back. |
 | **Chains and scripts.** `start github & start wikipedia` runs both. `batch add morning start github` saves a script you run by typing `morning`. | **Closed by mistake?** Ctrl+Shift+T reopens the last 20 closed tabs. |
+| **Your own shortcuts.** `doskey yt=start youtube.com/results?search_query=$*`, then `yt lofi beats`. | **Split view.** `split github` shows a second page beside the one you are on. `split off` goes back to one. |
+| **Link hints.** `f` puts a short label on every link. Type the label to follow it, without the mouse. | **Efficiency mode.** On battery, background tabs sleep after 1 minute and free their memory after 10. |
 
 | Read the web your way | Private and light |
 | :--- | :--- |
 | **Built-in ad blocker.** uBlock Origin Lite is on by default. Surf keeps it up to date and checks every update against its published SHA-256. | **No telemetry.** No analytics and no crash reports. The only requests Surf makes by itself are its own update check and the ad blocker's. [Details](docs/PRIVACY.md). |
 | **Force dark mode.** Bundled Dark Reader turns bright sites dark. | **One folder.** Settings, history, bookmarks and browser data live in `%LOCALAPPDATA%\SurfBrowser`. Delete it and the app folder, and Surf is gone. |
 | **Text mode.** `mode text` shows a page as monospace text in your console colors, with no pictures or videos. `type` prints the page's text into the console. | **Clear on exit.** Optionally wipe cookies, history and site data every time you close Surf. Third-party cookie blocking and tracking prevention are built in. |
+| **Find on the page.** `find "text"` marks every match and lists them in the console. `find 3` jumps to the third. | **Private tabs.** `start /private` opens a tab that stays out of your history and forgets its sign-ins when the last one closes. |
+| **Screenshots.** `snip` saves the part of the page you see, `snip /full` the whole page. | **Task manager.** `tasklist` shows how much memory each tab uses. `taskkill 3` or `taskkill /im youtube` closes tabs. |
 | **Picture-in-picture.** `pip` floats the video, and auto PiP can do it when you switch tabs. | **Updates itself.** Surf checks for a new version once a day and has it ready for your next start, checked against the SHA-256 GitHub publishes. `ver /update` checks right away. |
 
 | Make it yours | Feels like home |
@@ -141,7 +145,7 @@ All of them run the same Surf at the same speed, and all of them update themselv
 In PowerShell, in the folder where you saved the file:
 
 ```powershell
-Get-FileHash .\Surf-1.1.1-win-x64-setup.exe -Algorithm SHA256
+Get-FileHash .\Surf-1.2.0-win-x64-setup.exe -Algorithm SHA256
 ```
 
 Compare the hash with the matching line in `SHA256SUMS.txt` from the same release.

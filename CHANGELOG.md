@@ -2,6 +2,24 @@
 
 All notable changes to Surf Browser are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and Surf uses [semantic versioning](https://semver.org/).
 
+## [1.2.0] - 2026-10-31
+
+### Added
+
+- Suggestions as you type. Matching commands, sites, tabs, bookmarks and shortcuts appear above the prompt, each with a short note on what it does, and the rest of the selected match shows dimmed after the cursor. Tab takes the selected match and then moves to the next one; Up and Down move through the list and Esc hides it. After a command and a space, a dim hint shows what it expects. It can be turned off with Command suggestions in Settings, and Tab completes either way.
+- `split site` shows a second page beside the current one. Click a page to make it the current one, drag the bar between them to resize, and `split off` goes back to one page.
+- `f` labels every link, button and field in view. Type a label to follow it, or type it in capitals to open the link in a new tab.
+- `find "text"` marks every match on the page and lists them in the console; `find n` jumps to match n and `find` alone clears the marks.
+- `start /private` opens a private tab. Nothing from it goes into your history, and its sign-ins and cookies are deleted when the last private tab closes. The ad blocker works there too.
+- `snip` saves a picture of the visible page to your download folder, and `snip /full` saves the whole page.
+- `tasklist` shows every tab with its process, state and memory use, plus the engine's own processes and a total. `taskkill n` closes tab n and `taskkill /im site` closes every tab showing that site.
+- `doskey name=command` makes your own shortcuts, with `$1` to `$9`, `$*` and `$T` as in Windows. `doskey` lists them and `doskey name=` deletes one.
+- Efficiency mode (Settings, Tabs and media; on battery by default). Background tabs sleep after 1 minute and free their memory after 10, unless your own times are shorter or Never.
+
+### Changed
+
+- Up and Down move through the suggestion list while it is open, and through the commands you typed otherwise.
+
 ## [1.1.1] - 2026-10-31
 
 ### Added
