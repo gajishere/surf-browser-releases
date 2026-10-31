@@ -39,7 +39,7 @@
 Surf is a web browser with no toolbar. The page fills the window, your tabs sit in the title bar like Windows Terminal, and a black console sits underneath. You type what you want and press Enter.
 
 ```text
-C:\Surf [Version 1.2.0]
+C:\Surf [Version 1.2.1]
 (c) 2026 Surf Browser. Type 'help' for commands.
 
 C:\Web>wikipedia
@@ -145,7 +145,7 @@ All of them run the same Surf at the same speed, and all of them update themselv
 In PowerShell, in the folder where you saved the file:
 
 ```powershell
-Get-FileHash .\Surf-1.2.0-win-x64-setup.exe -Algorithm SHA256
+Get-FileHash .\Surf-1.2.1-win-x64-setup.exe -Algorithm SHA256
 ```
 
 Compare the hash with the matching line in `SHA256SUMS.txt` from the same release.

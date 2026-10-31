@@ -66,6 +66,7 @@ While you type, matching commands, sites and tabs are listed above the prompt wi
 | Middle-click a tab | Closes it. |
 | Click the x on a tab | Closes it. The x shows on the current tab and when you point at another. In icon-only tab mode, only the current tab has one. |
 | Click the plus button | Opens a new tab. |
+| Click the back or forward arrow | Goes back or forward one page in the current tab, like `back` and `forward`. The arrows sit beside the logo and dim when there is nowhere to go. |
 | Click a group label | Collapses the group, or expands it again. Tabs from the same site sit together under one label when smart grouping is on, and collapsed groups are not remembered after you restart. |
 | Mouse wheel over the tabs | Scrolls the tab strip when there are more tabs than fit. |
 | Drag the empty space in the title bar | Moves the window. |

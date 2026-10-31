@@ -2,6 +2,16 @@
 
 All notable changes to Surf Browser are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and Surf uses [semantic versioning](https://semver.org/).
 
+## [1.2.1] - 2026-11-01
+
+### Added
+
+- Back and forward buttons beside the logo in the title bar. They dim when the current page has nowhere to go.
+
+### Fixed
+
+- An auto-hidden taskbar now slides out over a maximized Surf. Surf covered more than the whole screen, so Windows took it for a full-screen app; on a screen whose taskbar auto-hides, it now leaves the taskbar's edge 2 pixels free.
+
 ## [1.2.0] - 2026-10-31
 
 ### Added
